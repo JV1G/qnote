@@ -1,0 +1,24 @@
+{
+  "name": "qnote",
+  "version": "1.0.0",
+  "description": "qNote (quick Note) is a simple online notepad that lets you jot down your thoughts in seconds. Whether you're drafting a quick reminder or penning a masterpiece, qNote has you covered.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JV1G/qnote.git"
+  },
+  "author": "JV1G",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JV1G/qnote/issues"
+  },
+  "homepage": "https://github.com/JV1G/qnote#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.4.3"
+  }
+}
