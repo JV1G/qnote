@@ -15,7 +15,9 @@ function downloadText() {
     const anchor = document.createElement('a');
 
     let noteTitle = makeTitle(textArea); // Name of the note/file
-    
+    noteTitle = noteTitle.replace(/\./g, ' dot ');
+
+
     if (noteTitle !== '') { 
         anchor.download = noteTitle + ' (qNote)';  // Set the downloaded file title 
     } else {
