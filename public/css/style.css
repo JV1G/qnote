@@ -11,6 +11,7 @@
     --color-scrollbar-thumb: #a5917b;
     --color-scrollbar-track: #f0ede6; 
     --color-copyright: #7a7a7a; 
+    --color-active-page: #564235;  
 
     /* Size variables */
     --scrollbar-width-body: 0.9rem; /* Body Scrollbar width */
@@ -157,6 +158,12 @@ main .content aside {
     font-weight: bold;
 }
 
+.published-notes-pagination .page-active {
+    color: var(--color-active-page);
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-active-page);
+}
+
 .note-content {
     flex: 75%; 
     height: 65vh;
@@ -204,4 +211,9 @@ footer .copyright {
     footer {
         padding: 1rem;
     }
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
 }
