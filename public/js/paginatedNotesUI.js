@@ -29,6 +29,7 @@ async function displayNotes() {
     notes.forEach((note) => {
         const noteElement = document.createElement('div');
         noteElement.className = 'published-note';
+        noteElement.setAttribute('data-note-id', note._id);
 
         const topDiv = document.createElement('div');
         topDiv.className = 'top';
