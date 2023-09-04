@@ -1,0 +1,207 @@
+/* Global variables */
+:root {
+    /* Color variables */
+    --color-body-bg: #e5d8c8; 
+    --color-primary-bg: #f7f2e6; 
+    --color-primary-text: #4c3e32; 
+    --color-secondary-bg: #d3c4ad; 
+    --color-secondary-text: #564235; 
+    --color-note-name: #322b23;
+    --color-note-date: #7a7a7a; 
+    --color-scrollbar-thumb: #a5917b;
+    --color-scrollbar-track: #f0ede6; 
+    --color-copyright: #7a7a7a; 
+
+    /* Size variables */
+    --scrollbar-width-body: 0.9rem; /* Body Scrollbar width */
+    --scrollbar-width-note: 0.7rem; /* Note Scrollbar width */
+}
+
+
+/* Base document settings */
+html {
+    font-size: 16px;
+}
+
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+/* Base body styling */
+body {
+    font-family: 'Source Code Pro', monospace;
+    background-color: var(--color-body-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Site's logo is currently just text */
+.site-logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Scrollbars */
+body::-webkit-scrollbar {
+    width: var(--scrollbar-width-body);
+}
+
+.note-content form textarea[name="note-textarea"]::-webkit-scrollbar {
+    width: var(--scrollbar-width-note);
+}
+
+body::-webkit-scrollbar-thumb, .note-content form textarea[name="note-textarea"]::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb);
+}
+
+body::-webkit-scrollbar-track, .note-content form textarea[name="note-textarea"]::-webkit-scrollbar-track {
+    background-color: var(--color-scrollbar-track);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary-text);
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: var(--color-primary-bg);
+    color: var(--color-primary-text);
+    font-size: 1.2rem;
+}
+
+button, .published-note {
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+button:hover, .published-note:hover {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-secondary-text);
+    cursor: pointer;
+}
+
+header nav {
+    display: flex;
+    background-color: var(--color-primary-bg);
+    font-size: 2rem;
+    padding: 1rem 2rem;
+}
+
+main {
+    margin: 0 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex-grow: 1;
+
+}
+
+main .user-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+main .content {
+    display: flex;
+    gap: 1rem;
+}
+
+main .content .content, main .content aside {
+    background-color: var(--color-primary-bg);
+}
+
+main .content aside {
+    flex: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+.published-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.published-note {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.5rem;
+}
+
+.published-note .note-name {
+    font-weight: bold;
+    color: var(--color-note-name);
+} 
+
+.published-note .note-date {
+    color: var(--color-note-date)
+}
+
+.published-notes-pagination {
+    display: flex;
+    justify-content: space-around;
+}
+
+.published-notes-pagination a:hover {
+    color: var(--color-secondary-text);
+    font-weight: bold;
+}
+
+.note-content {
+    flex: 75%; 
+    height: 65vh;
+}
+
+.note-content form textarea[name="note-textarea"] {
+    padding: 1rem;
+    background-color: var(--color-primary-bg);
+    width: 100%;
+    height: 100%;
+    resize: none;  
+    border: none;
+    font-size: 1.1rem;
+}
+
+.note-content form textarea[name="note-textarea"]:focus {
+    outline: none;           
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+footer .copyright {
+    color: var(--color-copyright);
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .user-controls {
+        flex-direction: column;
+    }
+    button {
+        width: 100%;
+    }
+    main {
+        margin: 0 2rem;
+        flex-direction: column-reverse;
+    }
+    main .content {
+        flex-direction: column;
+    }
+    footer {
+        padding: 1rem;
+    }
+}
