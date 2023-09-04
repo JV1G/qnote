@@ -14,7 +14,7 @@ mongoose.connect(mongoURI, {
     useUnifiedTopology: true
 }).then(() => { 
     console.log('MongoDB connected');
-    //deleteDocuments(models.Note); // Delete all documents
+    deleteDocuments(models.Note); // Delete all documents
 }).catch((error) => console.error('Error connecting to database:', error));
 
 
@@ -30,12 +30,16 @@ function deleteDocuments(model) {
 }
 
 app.post('/publishNote', async (req, res) => {
+    console.log(req.body.noteTitle); // for debugging
     console.log(req.body.noteText); // for debugging
 
+    // Store the req's noteTitle
+    const noteTitle = req.body.noteTitle;
     // Store the req's noteText
     const noteText = req.body.noteText;
     // Create new note document
     const newNote = new models.Note({
+        title: noteTitle,
         text: noteText
     });
     // Save the note inside the notes collection

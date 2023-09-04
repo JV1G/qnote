@@ -1,4 +1,5 @@
 import { textArea } from './common.js';
+import { makeTitle } from './utilities.js';
 
 // Get the reference to the publish (note) button
 const publishNoteBtn = document.getElementById('publish-note-button');
@@ -9,6 +10,7 @@ publishNoteBtn.addEventListener('click', () => {
 });
 
 async function publishText() {
+    let noteTitle = makeTitle(textArea); // Name of the note/file
     const noteText = textArea.value;
 
     try {
@@ -17,7 +19,7 @@ async function publishText() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ noteText })
+            body: JSON.stringify({ noteTitle, noteText })
         });
 
         const data = await response.json();
