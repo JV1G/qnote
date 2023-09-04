@@ -8,6 +8,7 @@
     <script type="module" src="/js/textareaEvents.js"></script>
     <script type="module" src="/js/fileDownload.js"></script>
     <script type="module" src="/js/filePublish.js"></script>
+    <script type="module" src="/js/paginatedNotesUI.js"></script>
     <script type="module" src="/js/utilities.js"></script>
 </head>
 <body>
@@ -37,31 +38,22 @@
             <!--Box where the published texts (notes) are-->
             <aside>
                 <!--The published notes-->
-                <div class="published-notes">
+                <div class="published-notes" id="published-notes-container">
                     <!--A published note-->
-                    <div class="published-note">
+
+                    <!--<div class="published-note">    
                         <div class="top">
-                            <p class="note-name">PublishedNoteName1</p> <!--Update this-->
+                            <p class="note-name">PublishedNoteName1</p> 
                         </div>
                         <div class="bottom">
-                            <p class="note-date">05/07/2023</p> <!--Update this-->
+                            <p class="note-date">05/07/2023</p> 
                         </div>
-                    </div>
-                    <!--A published note-->
-                    <div class="published-note">
-                        <!--Name box-->
-                        <div class="top">
-                            <p class="note-name">PublishedNoteName2</p> <!--Update this-->
-                        </div>
-                        <!--Information box-->
-                        <div class="bottom">
-                            <p class="note-date">02/03/2023</p> <!--Update this-->
-                        </div>
-                    </div>
+                    </div>-->
+
                 </div>
                 <!--Pagination-->
-                <div class="published-notes-pagination">
-                    <a href="#">&lt;&minus;</a>
+                <div class="published-notes-pagination" id="pagination">
+                    <!--<a href="#">&lt;&minus;</a>
                     <a href="#">1</a>
                     <a href="#">2</a>
                     <a href="#">3</a>
@@ -72,7 +64,7 @@
                     <a href="#">8</a>
                     <a href="#">9</a>
                     <a href="#">10</a>
-                    <a href="#">&minus;&gt;</a>
+                    <a href="#">&minus;&gt;</a>-->
                 </div>
             </aside>
         </div>

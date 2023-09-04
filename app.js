@@ -14,7 +14,7 @@ mongoose.connect(mongoURI, {
     useUnifiedTopology: true
 }).then(() => { 
     console.log('MongoDB connected');
-    deleteDocuments(models.Note); // Delete all documents
+    //deleteDocuments(models.Note); // Delete all documents
 }).catch((error) => console.error('Error connecting to database:', error));
 
 
@@ -56,6 +56,22 @@ app.get('/', async (req, res) => {
         console.log(error);
         res.status(500).send(`An error occured: ${error.message}`);
     }
+});
+
+app.get('/getPaginationNotes', async (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit
+
+    // Get notes
+    const notes = await models.Note.find().skip(skip).limit(limit);
+    const total = await models.Note.countDocuments();
+
+    res.json({
+        notes,
+        totalPages: Math.ceil(total / limit),
+        currentPage: page
+    });
 });
 
 

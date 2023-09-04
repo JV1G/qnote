@@ -29,4 +29,12 @@ export function makeTitle(textArea) {
     return noteTitle;
 }
 
+// Return a truncated version of the title
+export function truncateTitle(title, maxLength) {
+    if (title.length > maxLength) {
+      return title.substring(0, maxLength).trim() + "...";
+    }
+    return title;
+}
+
 
