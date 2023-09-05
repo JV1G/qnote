@@ -1,5 +1,6 @@
 import { textArea } from './common.js';
 import { makeTitle } from './utilities.js';
+import { showPopUp } from './utilities.js';
 
 // Get the reference to the save (download text file) button
 const saveNoteBtn = document.getElementById('save-note-button');
@@ -28,4 +29,6 @@ function downloadText() {
     anchor.href = URL.createObjectURL(blob);
     anchor.click();
     URL.revokeObjectURL(anchor.href);
+
+    showPopUp("Note downloaded successfully!", "success");
 }

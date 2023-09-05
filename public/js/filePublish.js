@@ -1,5 +1,6 @@
 import { textArea } from './common.js';
 import { makeTitle } from './utilities.js';
+import { showPopUp } from './utilities.js';
 
 // Get the reference to the publish (note) button
 const publishNoteBtn = document.getElementById('publish-note-button');
@@ -28,8 +29,10 @@ async function publishText() {
 
         if(data.status === 'success') {
             console.log('Note published succesfully');
+            showPopUp("Note published successfully!", data.status);
         } else {
             console.log('Failed to publish note');
+            showPopUp("Failed to publish note!", data.status);
         }
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);

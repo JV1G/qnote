@@ -11,7 +11,10 @@
     --color-scrollbar-thumb: #a5917b;
     --color-scrollbar-track: #f0ede6; 
     --color-copyright: #7a7a7a; 
-    --color-active-page: #564235;  
+    --color-active-page: #564235; 
+    --color-popup-bg: #322b23; 
+    --color-status-success: #6db27b;
+    --color-status-error: #bf5f5a;
 
     /* Size variables */
     --scrollbar-width-body: 0.9rem; /* Body Scrollbar width */
@@ -216,4 +219,31 @@ footer .copyright {
 .disabled {
     pointer-events: none;
     opacity: 0.6;
+}
+
+/* Status box */
+
+.popUpBox {
+    display: none;
+    position: sticky;
+    justify-content: center;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    z-index: 1000; 
+    background-color: var(--color-popup-bg); 
+}
+
+.popUpContent {
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+.status-success {
+    color: var(--color-status-success);
+}
+
+.status-error {
+    color: var(--color-status-error);
 }

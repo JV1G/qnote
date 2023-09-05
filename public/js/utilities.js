@@ -1,4 +1,5 @@
 import { textArea } from './common.js';
+import { popUp } from './common.js';
 
 // Get the reference to the new note (clear note content) button
 const newNoteBtn = document.getElementById('new-note-button');
@@ -11,6 +12,7 @@ newNoteBtn.addEventListener('click', () => {
 // Clear the content of the note
 function clearText() {
     textArea.value = '';
+    closePopUp(popUp);
 }
 
 // Make a title out of the textArea content
@@ -37,4 +39,54 @@ export function truncateTitle(title, maxLength) {
     return title;
 }
 
+// Show pop up with the text
+export function showPopUp(text, status) {
+    popUp.style.display = "flex"; // Display pop up
+    // Select pop up's child responsible for holding the content
+    const popUpContent = popUp.querySelector(".popUpContent"); 
 
+    // Measure the height of the popup
+    const popUpHeight = popUp.offsetHeight;
+
+    // Add padding to the body equivalent to the height of the popup to prevent overlap
+    document.body.style.paddingTop = `${popUpHeight}px`;
+
+    // Give styling to pop up content based on status
+    if(status === 'success') {
+        popUpContent.classList.add('status-success');
+    } else if (status === 'error') {
+        popUpContent.classList.add('status-error');
+    }
+
+    // Set the content of the pop up
+    popUpContent.textContent = String(text);
+
+    // Set a timer to hide the pop up after the time passes
+    setTimeout(function() {
+        closePopUp(popUp); // Close the pop up
+        
+        // Remove status class from pop up content
+        if (status === 'success') {
+            popUpContent.classList.remove('status-success');
+        } else if (status === 'error') {
+            popUpContent.classList.remove('status-error');
+        }
+    }, 5000);
+}
+
+export function closePopUp(popUp) {
+    popUp.style.display = "none";
+    removeSpaceForPopUp();
+}
+
+function addSpaceForPopUp() {
+    // Measure the height of the popup
+    const popUpHeight = popUp.offsetHeight;
+
+    // Add padding to the body equivalent to the height of the popup to prevent overlap
+    document.body.style.paddingTop = `${popUpHeight}px`;
+}
+
+function removeSpaceForPopUp() {
+    document.body.style.paddingTop = "0px";
+}
