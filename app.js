@@ -64,7 +64,7 @@ app.get('/getPaginationNotes', async (req, res) => {
     const skip = (page - 1) * limit
 
     // Get notes
-    const notes = await models.Note.find().skip(skip).limit(limit);
+    const notes = await models.Note.find().sort({ '_id': -1 }).skip(skip).limit(limit);
     const total = await models.Note.countDocuments();
 
     res.json({
