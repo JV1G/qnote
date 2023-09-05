@@ -2,11 +2,16 @@
 
 qNote (quick Note) is a simple online notepad that lets you jot down your thoughts in seconds. Whether you're drafting a quick reminder or penning a masterpiece, qNote has you covered. 
 
+**Version**: 1.1.0
+
 ## Features
 
-1. **Instant Writing**: No sign-ups, no delays. Just open qNote and start writing.
+1. **Instant Writing**: No sign-ups, no delays. Just open qNote and start writing. 
+
+    >**Note**: The first line of your note will be used as the title for the downloaded text file and for the published note on our platform.
 2. **Save to Your Computer**: Want to keep what you wrote? Download it instantly.
 3. **Publish and Share**: Immortalize your notes by publishing them. Once you publish, anyone can discover and read your note on our platform.
+4. **Upload from Your Computer**: Want to modify a note from your computer? Upload it and start modifying it instantly.
 
 ## How to Use
 
