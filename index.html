@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <script type="module" src="/js/textareaEvents.js"></script>
     <script type="module" src="/js/fileDownload.js"></script>
+    <script type="module" src="/js/fileUpload.js"></script>
     <script type="module" src="/js/filePublish.js"></script>
     <script type="module" src="/js/paginatedNotesUI.js"></script>
     <script type="module" src="/js/utilities.js"></script>
@@ -25,6 +26,8 @@
         <!--Actions the user can take with the note-->
         <div class="user-controls">
             <button id="new-note-button"><i class="fas fa-sticky-note"></i> Start a new Note</button> <!--Button to CLEAR the text area-->
+            <button id="upload-note-button"><i class="fa-solid fa-file-arrow-up"></i> Upload </button> <!--Button to UPLOAD the text on the website-->
+            <input type="file" id="file-input" style="display: none;">
             <button id="save-note-button"><i class="fa-regular fa-floppy-disk"></i> Save</button> <!--Button to SAVE the text to computer-->
             <button id="publish-note-button"><i class="fa-regular fa-star"></i> Publish</button> <!--Button to PUBLISH the text on the website-->
         </div>
