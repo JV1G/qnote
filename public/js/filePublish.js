@@ -7,9 +7,15 @@ const publishNoteBtn = document.getElementById('publish-note-button');
 
 // Add event listener to button to publish when clicked
 publishNoteBtn.addEventListener('click', () => {
-    if(textArea.value.trim() !== '') { // If textArea is not empty
+    const lines = textArea.value.split('\n');
+    const firstLine = lines[0].trim();
+    
+    // Check if textArea and first line are not empty
+    if(textArea.value.trim() !== '' && firstLine !== '') { 
         publishText();
-    } 
+    } else {
+        showPopUp('First line is the title of the note and must not be empty!', "error");
+    }
 });
 
 async function publishText() {

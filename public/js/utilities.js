@@ -1,6 +1,8 @@
 import { textArea } from './common.js';
 import { popUp } from './common.js';
 
+let popUpTimer; // variable to hold timer ID
+
 // Get the reference to the new note (clear note content) button
 const newNoteBtn = document.getElementById('new-note-button');
 
@@ -41,6 +43,12 @@ export function truncateTitle(title, maxLength) {
 
 // Show pop up with the text
 export function showPopUp(text, status) {
+    // Clear any existing timer
+    clearTimeout(popUpTimer);
+
+    //Close previous pop up
+    closePopUp(popUp);
+
     popUp.style.display = "flex"; // Display pop up
     // Select pop up's child responsible for holding the content
     const popUpContent = popUp.querySelector(".popUpContent"); 
@@ -62,20 +70,16 @@ export function showPopUp(text, status) {
     popUpContent.textContent = String(text);
 
     // Set a timer to hide the pop up after the time passes
-    setTimeout(function() {
+    popUpTimer = setTimeout(function() {
         closePopUp(popUp); // Close the pop up
-        
-        // Remove status class from pop up content
-        if (status === 'success') {
-            popUpContent.classList.remove('status-success');
-        } else if (status === 'error') {
-            popUpContent.classList.remove('status-error');
-        }
     }, 5000);
 }
 
 export function closePopUp(popUp) {
+    clearTimeout(popUpTimer); // Clear any existing timer
     popUp.style.display = "none";
+    const popUpContent = popUp.querySelector(".popUpContent");
+    popUpContent.classList.remove('status-success', 'status-error');
     removeSpaceForPopUp();
 }
 
