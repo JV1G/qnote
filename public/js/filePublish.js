@@ -6,7 +6,9 @@ const publishNoteBtn = document.getElementById('publish-note-button');
 
 // Add event listener to button to publish when clicked
 publishNoteBtn.addEventListener('click', () => {
-    publishText();
+    if(textArea.value.trim() !== '') { // If textArea is not empty
+        publishText();
+    } 
 });
 
 async function publishText() {
