@@ -134,6 +134,7 @@ main .user-controls {
     position: sticky;
     top: 0; 
     background-color: var(--color-primary-bg);
+    align-items: center;
 }
 
 .count-container {
@@ -261,6 +262,9 @@ footer .copyright {
     }
     .user-controls {
         gap: 1rem;
+    }
+    main .user-controls {
+        align-items: stretch;
     }
 }
 
