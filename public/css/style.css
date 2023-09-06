@@ -15,6 +15,7 @@
     --color-popup-bg: #322b23; 
     --color-status-success: #6db27b;
     --color-status-error: #bf5f5a;
+    --color-border: #322b23;
 
     /* Size variables */
     --scrollbar-width-body: 0.9rem; /* Body Scrollbar width */
@@ -51,7 +52,7 @@ body {
 }
 
 /* Scrollbars */
-body::-webkit-scrollbar {
+/*body::-webkit-scrollbar {
     width: var(--scrollbar-width-body);
 }
 
@@ -64,6 +65,22 @@ body::-webkit-scrollbar-thumb, .note-content form textarea[name="note-textarea"]
 }
 
 body::-webkit-scrollbar-track, .note-content form textarea[name="note-textarea"]::-webkit-scrollbar-track {
+    background-color: var(--color-scrollbar-track);
+}*/
+
+textarea {
+    overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: var(--scrollbar-width-body);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb);
+}
+
+body::-webkit-scrollbar-track {
     background-color: var(--color-scrollbar-track);
 }
 
@@ -78,6 +95,10 @@ button {
     background-color: var(--color-primary-bg);
     color: var(--color-primary-text);
     font-size: 1.2rem;
+    display: flex;
+    text-align: center; 
+    align-items: center;
+    gap: 0.5rem;
 }
 
 button, .published-note {
@@ -95,38 +116,58 @@ header nav {
     background-color: var(--color-primary-bg);
     font-size: 2rem;
     padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10; 
 }
 
 main {
     margin: 0 4rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 2rem;
     flex-grow: 1;
-
 }
 
 main .user-controls {
     display: flex;
-    gap: 1rem;
+    position: sticky;
+    top: 0; 
+    background-color: var(--color-primary-bg);
+}
+
+.count-container {
+    display: flex;
+    margin-left: auto;
+}
+
+.word-count, .char-count {
+    margin-right: 1rem;
 }
 
 main .content {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
+    width: 80%;
 }
 
-main .content .content, main .content aside {
+main .content, main aside {
     background-color: var(--color-primary-bg);
 }
 
-main .content aside {
-    flex: 25%;
+main aside {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
     gap: 2rem;
+}
+
+aside {
+    align-self: flex-start;
+    position: sticky;
+    top: 0;
 }
 
 .published-notes {
@@ -164,12 +205,11 @@ main .content aside {
 .published-notes-pagination .page-active {
     color: var(--color-active-page);
     font-weight: bold;
-    border-bottom: 2px solid var(--color-active-page);
+    border-bottom: 0.2rem solid var(--color-active-page);
 }
 
 .note-content {
     flex: 75%; 
-    height: 65vh;
 }
 
 .note-content form textarea[name="note-textarea"] {
@@ -195,24 +235,54 @@ footer .copyright {
     color: var(--color-copyright);
 }
 
+#mobile-controls {
+    display: none;
+}
 
+/* CSS to hide non-mobile controls */
+.hide-controls {
+    display: none !important;
+}
 
-@media only screen and (max-width: 600px) {
-    .user-controls {
-        flex-direction: column;
-    }
+/* CSS to show mobile controls */
+.show-controls {
+    display: flex !important;
+}
+
+@media only screen and (max-width: 1200px) {
     button {
         width: 100%;
     }
+    .btn-text {
+        display: none;
+    }
+    button {
+        justify-content: center;
+    }
+    .user-controls {
+        gap: 1rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
     main {
         margin: 0 2rem;
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
     main .content {
         flex-direction: column;
     }
     footer {
         padding: 1rem;
+    }
+    main .content {
+        width: 100%;
+    }
+    main aside {
+        width: 100%;
+    }
+    aside {
+        top: unset; 
     }
 }
 

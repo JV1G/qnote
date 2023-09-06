@@ -1,6 +1,5 @@
-import { publishedNotesContainer } from "./common.js";
-import { truncateTitle } from "./utilities.js";
-import { textArea } from "./common.js"
+import { publishedNotesContainer, textArea } from "./common.js";
+import { resizeTextarea, truncateTitle, updateCounts } from "./utilities.js";
 
 let currentPage = 1; // Current pagination page
 let totalPages = 0; // Default number of pages
@@ -59,6 +58,8 @@ async function displayNotes(currentPage = 1, limit = 10) {
             const clickedNoteId = noteElement.getAttribute('data-note-id');
             if(note._id == clickedNoteId) {
                 textArea.value = note.text;
+                resizeTextarea(textArea);
+                updateCounts(textArea);
             }
         });
 

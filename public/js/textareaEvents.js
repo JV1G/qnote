@@ -1,4 +1,5 @@
 import { textArea } from './common.js';
+import { updateCounts } from "./utilities.js";
 
 textArea.addEventListener('focus', function() {
     console.log('User is focusing on the textarea of the note.');
@@ -25,4 +26,9 @@ textArea.addEventListener('keydown', function(event) {
         // Move the cursor after the inserted tab character:
         textArea.selectionStart = textArea.selectionEnd = start + 1;
     }
+});
+
+// Listen for input to count characters
+textArea.addEventListener('input', function(event) {
+    updateCounts(textArea);
 });

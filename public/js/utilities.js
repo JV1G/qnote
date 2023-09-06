@@ -1,5 +1,4 @@
-import { textArea } from './common.js';
-import { popUp } from './common.js';
+import { charCount, popUp, textArea, wordCount } from './common.js';
 
 let popUpTimer; // variable to hold timer ID
 
@@ -8,12 +7,13 @@ const newNoteBtn = document.getElementById('new-note-button');
 
 // Add event listener button to clear text when clicked
 newNoteBtn.addEventListener('click', () => {
-    clearText();
+    clearText(textArea);
 });
 
 // Clear the content of the note
-function clearText() {
+function clearText(textArea) {
     textArea.value = '';
+    updateCounts(textArea);
     closePopUp(popUp);
 }
 
@@ -93,4 +93,40 @@ function addSpaceForPopUp() {
 
 function removeSpaceForPopUp() {
     document.body.style.paddingTop = "0px";
+}
+
+// Resize textarea based on content
+export function resizeTextarea(textarea) {
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
+}
+
+
+export function updateCounts(textarea) {
+    updateChars(textarea);
+    updateWords(textarea);
+}
+
+function updateChars(textarea) {
+    const length = textarea.value.length; // How many characters textarea has
+    charCount.textContent = `${length} chars`;
+}
+
+function updateWords(textarea) {
+    const words = countWords(textarea.value);
+    wordCount.textContent = `${words} words`;
+}
+
+function countWords(str) {
+    const words = str.trim().split(/\s+/);
+    
+    // Filter out elements that don't contain at least one alphanumeric character
+    const validWords = words.filter(word => /[a-zA-Z0-9]/.test(word));
+    
+    // If the string is empty or no valid words, return 0
+    if (validWords.length === 0) {
+      return 0;
+    }
+    
+    return validWords.length;
 }

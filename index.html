@@ -24,15 +24,19 @@
         </nav>
     </header>
     <main>
-        <!--Actions the user can take with the note-->
-        <div class="user-controls">
-            <button id="new-note-button"><i class="fas fa-sticky-note"></i> Start a new Note</button> <!--Button to CLEAR the text area-->
-            <button id="upload-note-button"><i class="fa-solid fa-file-arrow-up"></i> Upload </button> <!--Button to UPLOAD the text on the website-->
-            <input type="file" id="file-input" style="display: none;">
-            <button id="save-note-button"><i class="fa-regular fa-floppy-disk"></i> Save</button> <!--Button to SAVE the text to computer-->
-            <button id="publish-note-button"><i class="fa-regular fa-star"></i> Publish</button> <!--Button to PUBLISH the text on the website-->
-        </div>
         <div class="content">
+            <!--Actions the user can take with the note-->
+            <div class="user-controls">
+                <button id="new-note-button"><i class="fas fa-sticky-note"></i><span class="btn-text">Start a new Note</span></button> <!--Button to CLEAR the text area-->
+                <button id="upload-note-button"><i class="fa-solid fa-file-arrow-up"></i><span class="btn-text">Upload</span></button> <!--Button to UPLOAD the text on the website-->
+                <input type="file" id="file-input" style="display: none;">
+                <button id="save-note-button"><i class="fa-regular fa-floppy-disk"></i><span class="btn-text">Save</span></button> <!--Button to SAVE the text to computer-->
+                <button id="publish-note-button"><i class="fa-regular fa-star"></i><span class="btn-text">Publish</span></button> <!--Button to PUBLISH the text on the website-->
+                <div class="count-container">
+                    <span class="word-count">0 words</span>
+                    <span class="char-count">0 chars</span>
+                </div>
+            </div>
             <!--Box where the text is typed-->
             <div class="note-content">
                 <!--Form where the note's text is typed-->
@@ -40,42 +44,30 @@
                     <textarea name="note-textarea" id="note-textarea" cols="30" rows="10" placeholder="Type your note here..."></textarea>
                 </form>
             </div>
+        </div>
             <!--Box where the published texts (notes) are-->
             <aside>
                 <!--The published notes-->
                 <div class="published-notes" id="published-notes-container">
-                    <!--A published note-->
-
-                    <!--<div class="published-note">    
-                        <div class="top">
-                            <p class="note-name">PublishedNoteName1</p> 
-                        </div>
-                        <div class="bottom">
-                            <p class="note-date">05/07/2023</p> 
-                        </div>
-                    </div>-->
-
+                    <!--Published notes appear here-->
                 </div>
                 <!--Pagination-->
                 <div class="published-notes-pagination" id="pagination">
-                    <!--<a href="#">&lt;&minus;</a>
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">7</a>
-                    <a href="#">8</a>
-                    <a href="#">9</a>
-                    <a href="#">10</a>
-                    <a href="#">&minus;&gt;</a>-->
+                    <!--Pages appear here-->
                 </div>
             </aside>
-        </div>
     </main>
     <footer>
         <p class="copyright">&copy; 2023 JV1G</p>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const textarea = document.querySelector('textarea[name="note-textarea"]');
+            textarea.addEventListener("input", function() {
+                this.style.height = "auto";
+                this.style.height = (this.scrollHeight) + "px";
+            });
+        });
+    </script>
 </body>
 </html>
